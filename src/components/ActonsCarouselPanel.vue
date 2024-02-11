@@ -15,6 +15,18 @@
               v-if="!isOver"
               class="w-100 d-flex flex-column align-center justify-center pa-4 pt-2"
           >
+            <div class="d-flex flex-row align-center justify-space-between" style="position: absolute;top: 0;left: 0;z-index: 0;width: 100%;height: 100%">
+              <img
+                  :src="flowerBg16"
+                  alt=""
+                  style="height: 70%; object-fit: cover;"
+              >
+              <img
+                  :src="flowerBg18"
+                  alt=""
+                  style="height: 60%; object-fit: cover;"
+              >
+            </div>
             <h2 class="pb-3">Мы или не мы?</h2>
             <img
                 :src="item"
@@ -86,6 +98,9 @@ import {weOrNot} from "@/homeData/images";
 import notWe from "../assets/img/weOrNot/notWe.jpg"
 import yesWe from "../assets/img/weOrNot/yesWe.png"
 import ImagesFontain from "@/components/ImagesFontain.vue";
+import flowerBg16 from "../assets/img/flower-bg-16.png"
+import flowerBg17 from "../assets/img/flower-bg17.png"
+import flowerBg18 from "../assets/img/flower-bg18.png"
 
 const isLoveFontainActive = ref(false);
 const isDeathFontainActive = ref(false);
