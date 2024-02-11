@@ -33,7 +33,7 @@ watch(()=>props.isOpen,()=>{
   if(props.isOpen){
     setTimeout(()=>{
       closeModal()
-    },5000);
+    },3000);
   }
 })
 
@@ -66,9 +66,11 @@ watch(()=>props.isOpen,()=>{
 }
 
 @keyframes kissAniamtion {
-
+  0%{
+    transform: scale(0.5);
+  }
   50%{
-    transform: rotateZ(360deg) scale(1.5);
+    transform: scale(1.5);
   }
   100%{
     transform: rotateZ(360deg) scale(1);
@@ -76,6 +78,6 @@ watch(()=>props.isOpen,()=>{
 }
 
 .image-kissing{
-  animation: 5s alternate kissAniamtion;
+  animation: 3s alternate kissAniamtion;
 }
 </style>

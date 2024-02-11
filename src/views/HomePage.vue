@@ -11,16 +11,16 @@
           <div class="px-4">
             Любимая, поздравляю тебя с 3 годами наших отношений и с 14 февраля!!!
             <br>
-           <div class="d-flex flex-column align-center justify-center">
-             Кидаю поцелуйчик через экран, надеюсь ты поймаешь
-             <img :src="kissBears" alt="" width="120px">
-             <v-btn
-             class="rounded-pill bg-pink-lighten-1"
-             @click="isModalKissOpen = true"
-             >
-               Поцеловать
-             </v-btn>
-           </div>
+            <div class="d-flex flex-column align-center justify-center">
+              Кидаю поцелуйчик через экран, надеюсь ты поймаешь
+              <img :src="kissBears" alt="" width="120px">
+              <v-btn
+                  class="rounded-pill bg-pink-lighten-1"
+                  @click="isModalKissOpen = true"
+              >
+                Поцеловать
+              </v-btn>
+            </div>
           </div>
           <img
               :src="flowerBg" alt=""
@@ -34,30 +34,52 @@
         <carousel-panel
             v-slot="slotProps"
             :items="greetingCards"
+            :bg="flowerBg12"
         >
-          <div class="w-100 d-flex justify-center pa-4">
+          <div class="w-100 d-flex justify-center pa-4 py-16 h-100">
             <img
-                :src="flowerCat"
+                :src="slotProps.item.cat"
                 alt=""
                 width="150px"
-                height="190px"
-                style="align-self: end"
+                style="align-self: end;object-fit: contain"
             >
             <p class="text-pink-darken-4 pa-5 text-pre-wrap">{{ slotProps.item.text }}</p>
             <img
-                :src="flowerRabbit"
+                :src="slotProps.item.bunny"
                 alt=""
                 width="150px"
-                height="150px"
-                style="align-self: end"
+                style="align-self: end; object-fit: contain"
             >
           </div>
         </carousel-panel>
       </v-card>
 
       <v-card class="card-container my-8">
-        <carousel-panel :items="we">
+        <carousel-panel
+            v-slot="slotProps"
+            :items="photoWeCards"
+            :bg="flowerBg4"
+        >
+          <div class="w-100 d-flex flex-column align-center justify-center pa-4">
+            <img
+                :src="slotProps.item.src"
+                width="100%"
+                height="100%"
+                style="object-fit: cover;max-height: 80vh; max-width: 50%;border-radius: 20px"
+                alt=""
+            >
+            <p
+                class="w-50 text-blue-darken-4 font-weight-medium pa-4 text-h6"
+               style="line-height: 1.8em; "
+            >
+              {{slotProps.item.text}}
+            </p>
+          </div>
         </carousel-panel>
+      </v-card>
+
+      <v-card class="card-container my-8">
+        <actons-carousel-panel/>
       </v-card>
 
     </v-container>
@@ -68,8 +90,7 @@
 // @ is an alias to /src
 import BackGround from '../components/BackGround.vue';
 import ModalKiss from '../components/ModalKiss.vue';
-import {greetingCards} from "@/homeData/greetings";
-
+import {greetingCards,photoWeCards} from "@/homeData/greetings";
 import {onMounted, ref} from "vue";
 import {useAuth} from "@/stores/useAuth";
 import router from "@/router";
@@ -78,12 +99,12 @@ import CarouselPanel from "@/components/CarouselPanel.vue";
 const {isAuth} = useAuth();
 const pageHeight = ref(window.innerHeight);
 import flowerBg from "../assets/img/flower-bg.png"
-import flowerCat from "../assets/img/flower-cat.png"
-import flowerRabbit from "../assets/img/flower-krol.png"
+import flowerBg12 from "../assets/img/flower-bg12.png"
+import flowerBg4 from "../assets/img/flower-bg4.png"
 import kissBears from "../assets/img/kiss-bears.png"
-import {we} from "../homeData/images";
+import ActonsCarouselPanel from "@/components/ActonsCarouselPanel.vue";
 
-const isModalKissOpen = ref(false  );
+const isModalKissOpen = ref(false);
 
 onMounted(() => {
   /*if(!isAuth) router.push('login');*/

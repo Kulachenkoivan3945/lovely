@@ -55,11 +55,11 @@ root {
 }
 
 .image-animation1 {
-  animation: 10s infinite alternate imageAnimation1;
+  animation: 7s infinite alternate imageAnimation1;
 }
 
 .image-animation2 {
-  animation: 10s infinite alternate imageAnimation2;
+  animation: 12s infinite alternate imageAnimation2;
 }
 
 .image-animation3 {
@@ -67,7 +67,7 @@ root {
 }
 
 .image-animation4 {
-  animation: 10s infinite alternate imageAnimation4;
+  animation: 15s infinite alternate imageAnimation4;
 }
 
 @keyframes init {

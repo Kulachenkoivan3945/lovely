@@ -5,23 +5,21 @@
       @mouseleave="showControls=false"
   >
     <div class="carousel-item-container align-center">
+      <div style="position: absolute;top: 0;left: 0;z-index: 0;width: 100%;height: 100%">
+        <img
+            :src="bg"
+            alt=""
+            style="width: 100%;height: 100%; object-fit: cover;"
+        >
+      </div>
       <carousel-item
           v-for="(item, i) in items"
           :key="i"
-          class="w-100 d-flex flex-column"
-          style="min-width: 100%; transition: all 0.9s ease-in-out;"
-          :style="{'transform': `translateX(-${100*currentItem}%) scaleY(${itemScale(i)})` }"
+          class="w-100 d-flex flex-column h-100"
+          style="min-width: 100%;min-height: 100%; transition: all 0.9s ease-in-out;"
+         :style="{'transform': `translateX(-${100*currentItem}%) scaleY(${itemScale(i)})` }"
       >
         <slot :item="item">
-          <div class="w-100 d-flex justify-center pa-4">
-            <img
-                :src="item"
-                width="100%"
-                height="100%"
-                style="object-fit: cover;max-height: 80vh; max-width: 50%;border-radius: 20px"
-                alt=""
-            >
-          </div>
         </slot>
       </carousel-item>
     </div>
@@ -58,7 +56,8 @@ import {defineProps} from "vue";
 import {ref} from "vue";
 
 const props = defineProps<{
-  items: []
+  items: [],
+  bg?: string
 }>()
 
 const itemScale = (item: number) => {
@@ -97,7 +96,6 @@ const toPrevItem = () => {
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  height: min-content;
   align-items: center;
 }
 </style>
